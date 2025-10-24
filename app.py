@@ -1,13 +1,5 @@
 import streamlit as st
 
-'''
-made by Hamza, 
-
-github repo: https://github.com/HamzaNasir0/Python-Fancy-Read-Me-Generator
-
-
-'''
-
 # --- CONFIG ---
 st.set_page_config(
     page_title="Markdown Editor",
@@ -29,6 +21,7 @@ st.markdown(
     .download-btn {
         background-color: #2E86AB;
         color: white;
+        
     }
     </style>
     """,
@@ -47,8 +40,6 @@ license_options = [
     "MIT License",
     "Apache License 2.0",
     "GNU GPLv3",
-    "BSD 3-Clause",
-    "Creative Commons Attribution 4.0",
     "None"
 ]
 selected_license = st.sidebar.selectbox("Choose a license:", license_options)
@@ -57,7 +48,7 @@ file_name = st.sidebar.text_input("Output file name:", "README.md")
 
 template_choice = st.sidebar.selectbox(
     "Insert a boilerplate template?",
-    ["None", "Basic README", "Project README", "Blog Post"]
+    ["None", "Basic README"]
 )
 
 # --- TEMPLATES ---
@@ -72,8 +63,6 @@ LICENSE_BADGES = {
     "MIT License": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
     "Apache License 2.0": "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)",
     "GNU GPLv3": "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)",
-    "BSD 3-Clause": "[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)",
-    "Creative Commons Attribution 4.0": "[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0)",
     "None": ""
 }
 
@@ -81,8 +70,6 @@ LICENSE_TEXT = {
     "MIT License": "This project is licensed under the MIT License.",
     "Apache License 2.0": "Licensed under the Apache License, Version 2.0.",
     "GNU GPLv3": "This project is licensed under the GNU GPL v3.0.",
-    "BSD 3-Clause": "Distributed under the BSD 3-Clause License.",
-    "Creative Commons Attribution 4.0": "Licensed under CC BY 4.0.",
     "None": ""
 }
 
@@ -116,7 +103,7 @@ if markdown_text.strip():
     
     # Download Button
     st.download_button(
-        label="Download .md",
+        label=f"{file_name}",
         data=final_md,
         file_name=file_name if file_name.endswith(".md") else f"{file_name}.md",
         mime="text/markdown"
@@ -128,8 +115,8 @@ else:
 # --- FOOTER ---
 st.markdown(
     f"""<hr>
-    <p style="text-align:center; font-size:large; color:grey;">
-    Made By Hamza using <a href="https://streamlit.io" target="_blank">Streamlit</a>
+    <p style="text-align:center; font-size:large; color:yellow;">
+    Made By Hamza <a href="https://github.com/HamzaNasir0/Python-Fancy-Read-Me-Generator" target="_blank">Github Repo</a>
     </p>""",
     unsafe_allow_html=True
 )
